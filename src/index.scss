@@ -40,6 +40,7 @@ header {
     }
     li {
       margin-right: 30px;
+      cursor: pointer;
     }
   }
 }
@@ -50,44 +51,6 @@ header {
 .sneakers {
   display: flex;
   justify-content: space-between;
-}
-.card {
-  padding: 10px;
-  p {
-    margin: 0;
-  }
-  img {
-    margin-top: 0;
-    width: 150px;
-    height: 150 px;
-  }
-  // border: 1px solid rgb(209, 207, 207);
-  border-radius: 20px;
-  width: 180px;
-}
-.cardItems {
-  margin-top: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  button {
-    border-radius: 8px;
-    border: 5px;
-    border-color: #fcfcfc;
-    background-color: #ffffff;
-    &:hover {
-      cursor: pointer;
-    }
-    img {
-      width: 15px;
-      height: 15px;
-      margin: 1px;
-    }
-  }
-}
-.cardValue {
-  display: flex;
-  gap: 5px;
 }
 
 .overlay {
@@ -104,16 +67,43 @@ header {
 .cart {
   position: absolute;
   width: 385px;
-  height: 100%;
+  height: 93%;
   right: 0px;
   top: 0px;
   background: #ffffff;
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
   padding: 30px;
+  overflow: auto;
   h2 {
     margin: 0;
     margin-bottom: 20px;
   }
+  display: flex;
+  flex-direction: column;
+}
+
+.cartHeader {
+  display: flex;
+  justify-content: space-between;
+  p {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  button {
+    background: none;
+    border: none;
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+      transition: opacity 0.2s ease-in-out;
+      cursor: pointer;
+    }
+  }
+}
+
+.items {
+  overflow: auto;
+  margin-bottom: 40px;
 }
 
 .cartItem {
@@ -150,7 +140,7 @@ header {
 .by {
   background: rgba(157, 212, 88, 1);
   border-radius: 10px;
-  height: 30px;
+  height: 50px;
   display: flex;
   justify-content: center;
   button {

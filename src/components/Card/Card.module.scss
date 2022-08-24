@@ -1,0 +1,38 @@
+.card {
+  padding: 10px;
+  p {
+    margin: 0;
+  }
+  img {
+    margin-top: 0;
+    width: 150px;
+    height: 150 px;
+  }
+  // border: 1px solid rgb(209, 207, 207);
+  border-radius: 20px;
+  width: 180px;
+}
+.cardItems {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    border-radius: 8px;
+    border: 5px;
+    border-color: #fcfcfc;
+    background-color: #ffffff;
+    &:hover {
+      cursor: pointer;
+    }
+    img {
+      width: 20px;
+      height: 20px;
+      margin: 1px;
+    }
+  }
+}
+.cardValue {
+  display: flex;
+  gap: 5px;
+}
