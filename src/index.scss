@@ -61,7 +61,7 @@ header {
     width: 150px;
     height: 150 px;
   }
-  border: 1px solid rgb(209, 207, 207);
+  // border: 1px solid rgb(209, 207, 207);
   border-radius: 20px;
   width: 180px;
 }
@@ -75,6 +75,9 @@ header {
     border: 5px;
     border-color: #fcfcfc;
     background-color: #ffffff;
+    &:hover {
+      cursor: pointer;
+    }
     img {
       width: 15px;
       height: 15px;
@@ -85,4 +88,78 @@ header {
 .cardValue {
   display: flex;
   gap: 5px;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+
+  background: rgba(0, 0, 0, 0.5);
+  // opacity: 0.5;
+}
+
+.cart {
+  position: absolute;
+  width: 385px;
+  height: 100%;
+  right: 0px;
+  top: 0px;
+  background: #ffffff;
+  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  h2 {
+    margin: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  p {
+    margin: 5px;
+  }
+  button {
+    background-color: #fcfcfc;
+    border: #fcfcfc;
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+      transition: opacity 0.2s ease-in-out;
+      cursor: pointer;
+    }
+  }
+}
+.cartItem_logo {
+  width: 120px;
+  height: 120px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+  font-weight: 700;
+}
+.by {
+  background: rgba(157, 212, 88, 1);
+  border-radius: 10px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

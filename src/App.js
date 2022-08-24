@@ -1,6 +1,32 @@
 function App() {
   return (
     <div className="wrapper">
+      <div className="overlay">
+        <div className="cart">
+          <h2>Корзина</h2>
+          <div className="cartItem">
+            <img
+              className="cartItem_logo"
+              src="\img\image 1.jpg"
+              alt="sneakers"
+            ></img>
+            <div>
+              <p>Мужские Кроссовки Nike Blazer Mid Suede</p>
+              <p>12 999 руб.</p>
+            </div>
+            <button>
+              <img src="\img\btnClose.svg" alt="close"></img>
+            </button>
+          </div>
+          <div className="total">
+            <p>Итого:</p>
+            <p>21 498 руб.</p>
+          </div>
+          <div className="by">
+            <button>Оформить заказ</button>
+          </div>
+        </div>
+      </div>
       <header>
         <div className="headerLeft">
           <img src="img\logo.svg" alt="logo" />
