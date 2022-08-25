@@ -1,20 +1,21 @@
 import styles from "./Card.module.scss";
 import React from "react";
-function Card(props) {
+function Card({ title, price, img, onClick }) {
   const [isAdded, setIsAdded] = React.useState(false);
 
   const onClickBy = () => {
+    onClick();
     setIsAdded(!isAdded);
   };
 
   return (
     <div className={styles.card}>
-      <img src={props.img} alt="sneakers"></img>
-      <p>{props.title}</p>
+      <img src={img} alt="sneakers"></img>
+      <p>{title}</p>
       <div className={styles.cardItems}>
         <div className={styles.cardValue}>
           <span>Цена:</span>
-          <span>{`${props.price} руб.`}</span>
+          <span>{`${price} руб.`}</span>
         </div>
         <button>
           <img

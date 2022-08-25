@@ -1,28 +1,36 @@
-function Cart(props) {
+function Cart({ onClickCart, onRemove, items = [] }) {
   return (
     <div className="overlay">
       <div className="cart">
         <div className="cartHeader">
           <p>Корзина</p>
-          <button onClick={props.onClickCart}>
+          <button onClick={onClickCart}>
             <img src="\img\btnClose.svg" alt="close"></img>
           </button>
         </div>
         <div className="items">
-          <div className="cartItem">
-            <img
-              className="cartItem_logo"
-              src="\img\image 1.jpg"
-              alt="sneakers"
-            ></img>
-            <div>
-              <p>Мужские Кроссовки Nike Blazer Mid Suede</p>
-              <p>12 999 руб.</p>
+          {items.map((item) => (
+            <div className="cartItem">
+              <img
+                className="cartItem_logo"
+                src={item.img}
+                alt="sneakers"
+              ></img>
+              <div>
+                <p>{item.title}</p>
+                <p>{item.price} руб.</p>
+              </div>
+              <button>
+                <img
+                  onClick={() => {
+                    onRemove(item.id);
+                  }}
+                  src="\img\btnClose.svg"
+                  alt="close"
+                ></img>
+              </button>
             </div>
-            <button>
-              <img src="\img\btnClose.svg" alt="close"></img>
-            </button>
-          </div>
+          ))}
         </div>
         <div className="total">
           <p>Итого:</p>

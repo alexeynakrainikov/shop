@@ -2,6 +2,8 @@ import Card from "./components/Card/Card";
 import Header from "./components/Header";
 import Cart from "./components/Cart";
 import React from "react";
+import axios from "axios";
+
 function App() {
   // const arr = [
   //   {
@@ -52,6 +54,7 @@ function App() {
   // ];
 
   const [sneakers, setSneakers] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([]);
   async function getData() {
     const res = await fetch(
       "https://630668eac0d0f2b8011ca8aa.mockapi.io/sneakers"
@@ -59,19 +62,47 @@ function App() {
     const data = await res.json();
     setSneakers(data);
   }
-  getData();
+
+  React.useEffect(() => {
+    axios
+      .get("https://630668eac0d0f2b8011ca8aa.mockapi.io/cart")
+      .then((res) => {
+        setCartItems(res.data);
+      });
+    getData();
+  }, []);
+
+  const onRemoveFromCart = (id) => {
+    axios.delete(`https://630668eac0d0f2b8011ca8aa.mockapi.io/cart/${id}`);
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  };
 
   const [cartOpened, setCartOpened] = React.useState(false);
-
+  const addToCart = (el) => {
+    axios.post("https://630668eac0d0f2b8011ca8aa.mockapi.io/cart", el);
+    setCartItems((prev) => [...prev, el]);
+  };
   return (
     <div className="wrapper">
-      {cartOpened ? <Cart onClickCart={() => setCartOpened(false)} /> : null};
+      {cartOpened ? (
+        <Cart
+          items={cartItems}
+          onClickCart={() => setCartOpened(false)}
+          onRemove={onRemoveFromCart}
+        />
+      ) : null}
+
       <Header onClickCart={() => setCartOpened(true)} />
       <div className="content">
         <h1>Все кроссовки</h1>
         <div className="sneakers">
           {sneakers.map((el) => (
-            <Card title={el.title} price={el.price} img={el.img} />
+            <Card
+              onClick={() => addToCart(el)}
+              title={el.title}
+              price={el.price}
+              img={el.img}
+            />
           ))}
         </div>
       </div>
