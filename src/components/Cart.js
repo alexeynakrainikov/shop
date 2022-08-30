@@ -1,4 +1,4 @@
-function Cart({ onClickCart, onRemove, items = [] }) {
+function Cart({ onClickCart, onRemove, items = [], totalPrice }) {
   return (
     <div className="overlay">
       <div className="cart">
@@ -10,7 +10,7 @@ function Cart({ onClickCart, onRemove, items = [] }) {
         </div>
         <div className="items">
           {items.map((item) => (
-            <div className="cartItem">
+            <div key={item.itemId} className="cartItem">
               <img
                 className="cartItem_logo"
                 src={item.img}
@@ -23,7 +23,7 @@ function Cart({ onClickCart, onRemove, items = [] }) {
               <button>
                 <img
                   onClick={() => {
-                    onRemove(item.id);
+                    onRemove(item);
                   }}
                   src="\img\btnClose.svg"
                   alt="close"
@@ -34,7 +34,7 @@ function Cart({ onClickCart, onRemove, items = [] }) {
         </div>
         <div className="total">
           <p>Итого:</p>
-          <p>21 498 руб.</p>
+          <p>{totalPrice} руб.</p>
         </div>
         <div className="by">
           <button>Оформить заказ</button>
